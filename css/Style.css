@@ -1,0 +1,4203 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", Arial, serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.About-Break {
+    display: none;
+}
+
+/* ////////////////////////////////////////// */
+
+/*#region-----------------------Navigation-Bar----------------------------*/
+
+.Header {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2;
+    top: 0;
+    background: white;
+}
+
+.Header .Header-Social {
+    position: absolute;
+    top: 9px;
+    left: 27%;
+    width: 125px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.Company-Name {
+    float: right;
+    padding: 5px 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+}
+
+.Top-Nav {
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.Top-Nav .Nav-Button {
+    float: left;
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+}
+
+.Nav-Button:hover {
+    color: #000;
+    /* background-color: #ccc; */
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Top-Nav .Active-Page {
+    color: black;
+    text-decoration-line: underline;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+
+.Side-Nav {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    transform: translate(-100vw, 0);
+    padding-top: 60px;
+    transition: width 475ms ease-out, transform 450ms ease, border-radius 0.8s 0.1s ease;
+    background: white
+}
+
+.Side-Nav .Nav-Button {
+    width: 100%;
+    float: left;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 600;
+    color: #888;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Side-Nav .Active-Page {
+    color: black;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}
+
+.Side-Nav .Nav-Content a {
+    transform: translatex(-50vw);
+}
+
+.Mini-Border {
+    width: 90%;
+    height: 1px;
+    position: absolute;
+    bottom: 180px;
+    left: 10px;
+    color: transparent;
+    background-color: black;
+}
+
+.Mini-Contact {
+    width: 75%;
+    padding: 5px 10px 5px 10px;
+    position: absolute;
+    bottom: 75px;
+    right: 30px;
+    background: transparent;
+    color: black;
+    border-radius: 15px;
+    border: solid 2px black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Mini-Dashboard {
+    width: 75%;
+    padding: 5px 10px 5px 10px;
+    position: absolute;
+    bottom: 125px;
+    right: 30px;
+    background: transparent;
+    color: black;
+    border-radius: 15px;
+    border: solid 2px black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Mini-Social {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.Mini-Social a {
+    transform: translatex(-50vw);
+}
+
+.Mini-Social i {
+    padding: 12px;
+    margin-top: 75px;
+    color: black;
+    transform: translatex(-50vw);
+}
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+input.Nav-Menu {
+    display: none;
+}
+
+label.Nav-Menu {
+    z-index: 99;
+    position: relative;
+    display: block;
+    height: 45px;
+    width: 25px;
+}
+
+label.Nav-Menu:hover {
+    cursor: pointer;
+}
+
+label.Nav-Menu>i {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 50%;
+    background-color: #333;
+    pointer-events: auto;
+    transition-duration: .25s;
+    transition-delay: .25s;
+}
+
+label.Nav-Menu>i:before, label.Nav-Menu>i:after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    left: 50%;
+    background-color: #333;
+    content: "";
+    transition: transform .35s;
+}
+
+label.Nav-Menu>i:before {
+    transform: translate(-50%, -9px);
+}
+
+label.Nav-Menu>i:after {
+    transform: translate(-50%, 9px);
+}
+
+label.Nav-Menu {
+    position: fixed;
+    top: 0px;
+    left: 15px;
+}
+
+@media screen and (min-width: 733px) {
+    .Nav-Menu {
+        display: none!important
+    }
+    .Side-Menu {
+        display: none!important
+    }
+}
+
+@media screen and (max-width:732px) {
+    .Top-Nav {
+        display: none!important
+    }
+}
+
+/*#region-----------------------Nav-Menu-Animations----------------------------*/
+
+input.Nav-Menu:checked~.Side-Nav {
+    transform: translatex(0);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a {
+    transform: translatex(0);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social i {
+    transform: translatex(0);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social .Mini-Contact {
+    transform: translatex(0);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social .Mini-Dashboard {
+    transform: translatex(0);
+}
+
+/* ///////////////////////////////////////////////////////////////////////////// */
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a:nth-child(1) {
+    transition: transform .8s 0.05s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a:nth-child(2) {
+    transition: transform .8s 0.10s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a:nth-child(3) {
+    transition: transform .8s 0.15s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a:nth-child(4) {
+    transition: transform .8s 0.20s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Nav-Links a:nth-child(5) {
+    transition: transform .8s 0.25s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social i:nth-child(1) {
+    transition: transform .8s 0.30s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social .Mini-Contact:nth-child(2) {
+    transition: transform .8s 0.40s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+input.Nav-Menu:checked~.Side-Nav .Nav-Content .Mini-Social .Mini-Dashboard:nth-child(3) {
+    transition: transform .8s 0.35s cubic-bezier(0.29, 1.6, 0.44, 0.96);
+}
+
+/* ////////////////////////////////////////////////////////////////////////////// */
+
+input.Nav-Menu:checked~label>i {
+    background-color: transparent;
+    transform: rotate(90deg);
+}
+
+input.Nav-Menu:checked~label>i:before {
+    transform: translate(-50%, -50%) rotate(315deg);
+}
+
+input.Nav-Menu:checked~label>i:after {
+    transform: translate(-50%, -50%) rotate(-315deg);
+}
+
+/*#endregion*/
+
+/*#endregion*/
+
+/*#region ---------------------- DASHBOARD--------------------------------*/
+
+.Dashboard-Background {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(253, 193, 104, 1) 0%, rgba(251, 128, 128, 1) 90%);
+}
+
+.Dashboard-Box {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.Dashboard-Logo {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Dashboard-Logo img {
+    background-color: rgb(65, 155, 161);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.Dashboard-Name {
+    padding-top: 30px;
+    font-size: 25px;
+}
+
+.Dashboard-Links {
+    padding-top: 30px;
+    text-align: center;
+    column-count: 1;
+}
+
+.Dashboard-Links a {
+    width: 25%;
+    margin: auto;
+    margin-bottom: 15px;
+    display: block;
+    background: #fff;
+    color: black;
+    border-radius: 10px;
+    border: solid 2px #fff;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Dashboard-Links a:hover, .Items-Link a:focus, .Items-Link a:active {
+    background: #eee !important;
+    border-color: #eee !important;
+    color: black;
+}
+
+.Dashboard-Icons {
+    margin: auto;
+    text-align: center;
+}
+
+.Dashboard-Icons i {
+    margin: 20px;
+    font-size: 45px;
+    color: black;
+}
+
+/*#endregion*/
+
+/*#region-----------------------HOME-PAGE---------------------------------*/
+
+/*#region-----------------------Slide-Show--------------------------------*/
+
+.First-Box {
+    border-radius: 25px;
+    width: 98%;
+    height: auto;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.First-Box h2 {
+    color: #006969;
+    font-size: 30px;
+}
+
+.First-Box p {
+    color: #555;
+    font-size: 20px;
+    margin: auto;
+}
+
+.Slide-Show {
+    position: relative;
+    overflow: hidden;
+    height: 75vh;
+    width: 50%;
+    border-radius: 25px;
+}
+
+/* .Slide-Show img {
+    width: 100%;
+} USE THIS IF YOU'RE GOING TO BE USING IMAGES INSTEAD OF GRADIENT COLOURS*/
+
+.Img1 {
+    background-image: linear-gradient(to top, #65CBC0, #F47B4F);
+    height: 100vh;
+}
+
+.Img2 {
+    background-image: linear-gradient(to left, #5D4157, #A8CABA);
+    height: 100vh;
+}
+
+.Img3 {
+    background-image: linear-gradient(to right, #EB5757, #000000);
+    height: 100vh;
+}
+
+.Img4 {
+    background-image: linear-gradient(to left, #FFA17F, #00223E);
+    height: 100vh;
+}
+
+.Content {
+    position: absolute;
+    display: none;
+    width: 60%;
+    top: 25%;
+    margin: auto;
+    right: 0;
+    left: 0;
+    text-align: center;
+    opacity: 1;
+    background: transparent;
+    color: white;
+    animation: anim 20s ease-in-out infinite;
+    -webkit-animation: anim 20s linear infinite;
+}
+
+/* USED FOR ANDROID (CHROME) */
+
+@keyframes anim {
+    0%, 3% {
+        top: 50%;
+        opacity: 0;
+    }
+    3%, 30% {
+        top: 30%;
+        opacity: 1;
+    }
+    50%, 100% {
+        top: 1000%;
+        opacity: 0;
+    }
+}
+
+/* USED FOR IOS (SAFARI) */
+
+@-webkit-keyframes anim {
+    0%, 3% {
+        top: 50%;
+        opacity: 0;
+    }
+    3%, 30% {
+        top: 30%;
+        opacity: 1;
+    }
+    50%, 100% {
+        top: 1000%;
+        opacity: 0;
+    }
+}
+
+.Content h2 {
+    font-size: 30px;
+    color: white!important;
+}
+
+.Content a {
+    background: #006969;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 15px 5px;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Content a:hover, .Content a:focus, .Content a:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+}
+
+.Dots {
+    position: absolute;
+    left: 25%;
+    top: 85vh;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color .6s ease;
+}
+
+.active, .dot:hover {
+    background-color: white;
+}
+
+.Announce {
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    top: 50vh;
+}
+
+.Announce p {
+    width: 75%;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Boxes-------------------------------------*/
+
+.Box {
+    border-radius: 25px;
+    width: 98%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.Box h2 {
+    color: #006969;
+    font-size: 30px;
+}
+
+.Box p {
+    color: #555;
+    font-size: 20px;
+    margin: auto;
+}
+
+/*#endregion*/
+
+/*#region-----------------------About-------------------------------------*/
+
+.About {
+    margin: auto;
+    width: 60%;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Latest------------------------------------*/
+
+.Latest {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.Latest-Intro {
+    width: 32%;
+    margin: auto;
+    text-align: left;
+}
+
+.Latest-Links {
+    width: 30%;
+    margin: auto;
+}
+
+.Latest-Links a {
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background: transparent;
+    color: #006969;
+    border-radius: 15px;
+    border: solid 2px #006969;
+    padding: 5px 15px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Latest-Links a:hover, .Latest-Links a:focus, .Latest-Links a:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Carousel--------------------------------- */
+
+.Slider-Container {
+    padding: 0 25px;
+}
+
+.Art-Slider .Art img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 275px;
+}
+
+.Art-Slider .Art video {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 275px;
+}
+
+.Apps-Slider .App img {
+    background: linear-gradient(0deg, rgba(200, 200, 200, 1) 0%, rgba(100, 100, 100, 1) 100%);
+    display: block;
+    width: 100%;
+    height: 405px;
+}
+
+.Items-List {
+    width: 95%;
+    position: relative;
+    margin: auto;
+}
+
+.App p {
+    font-weight: bold;
+    color: black;
+    font-size: 18px;
+}
+
+.Art p {
+    font-weight: bold;
+    color: black;
+    font-size: 18px;
+}
+
+.Items-Link {
+    padding: 40px 0px 20px;
+}
+
+.Items-Link a {
+    width: 15%;
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background: transparent;
+    color: #006969;
+    border-radius: 15px;
+    border: solid 2px #006969;
+    padding: 5px 15px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Items-Link a:hover, .Items-Link a:focus, .Items-Link a:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Social-Links----------------------------- */
+
+.Social-Links {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.Social-Links i {
+    padding-top: 20px;
+    margin: 20px;
+    font-size: 65px;
+    color: black;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Closing-----------------------------------*/
+
+.Closer {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 30px;
+    text-align: center;
+    background: black;
+}
+
+.Close {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.Close a {
+    color: white;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.Contact {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.Contact a {
+    width: 15%;
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background: transparent;
+    color: white;
+    border-radius: 15px;
+    border: solid 2px white;
+    padding: 5px 15px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Contact a:hover, .Contact a:focus, .Contact a:active {
+    background: #ccc !important;
+    border-color: #ccc !important;
+    color: black;
+}
+
+/*#endregion*/
+
+/*#endregion */
+
+/*#region-----------------------APPS-PAGE---------------------------------*/
+
+/*#region-----------------------Header-Counter--------------------------- */
+
+.Count-Ups {
+    width: 100%;
+    margin: auto;
+}
+
+.Section {
+    padding: 25px 25px;
+    display: inline-block;
+}
+
+.Section h2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.count {
+    color: rgb(75, 175, 175);
+    font-weight: 500;
+    font-size: 50px;
+}
+
+/*#endregion */
+
+/*#region-----------------------Dropdown--------------------------------- */
+
+.Horizontal-Scroll {
+    overflow: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom: 5px;
+}
+
+.Horizontal-Scroll .Active-Tab {
+    color: rgb(50, 170, 170);
+    text-decoration-line: underline;
+}
+
+/* Need to adjust the code here to work with the new scroll features */
+
+.Scroll-Tab {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    padding: 0px 5px 0px 5px;
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.Scroll-Tab:hover {
+    text-decoration-line: underline;
+}
+
+.Scroll-Controls {
+    display: none;
+}
+
+.Scroll-Controls i {
+    background: transparent;
+    color: #111;
+    border: solid 1px #111;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*#endregion*/
+
+/*#region-----------------------Cards------------------------------------ */
+
+.Apps-Card-Container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Apps-Card {
+    margin: 25px;
+    width: 320px;
+    height: 500px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: none;
+    position: relative;
+}
+
+.Apps-Card:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+.Apps-Card-Show {
+    display: block;
+}
+
+.Apps-Card-Image {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.Apps-Card-Image img {
+    background: linear-gradient(0deg, rgba(200, 200, 200, 1) 0%, rgba(100, 100, 100, 1) 100%);
+    width: 320px;
+    height: 300px;
+    display: block;
+    transition: 2s;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.Apps-Card:hover .Apps-Animation img {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    transform: scale(1.11);
+    filter: brightness(50%);
+}
+
+.Apps-Card:hover .Layer-Links {
+    opacity: 1;
+    transform: translate(0, -15px);
+}
+
+.Layer-Links {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: .5s;
+    opacity: 0;
+}
+
+.Layer-Links img {
+    background-color: #eee;
+    width: 145px;
+    height: 50px;
+    margin: 5px;
+}
+
+.Apps-Card-Info {
+    width: 94%;
+    padding-top: 10px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.Apps-Card-Info h2 {
+    color: #006969;
+    font-size: 23px;
+}
+
+.Apps-Card-Info h4 {
+    text-align: center;
+}
+
+.Apps-Card-Info p {
+    font-size: 15px;
+}
+
+/*#endregion */
+
+/*#endregion*/
+
+/*#region-----------------------CODING-PAGE-------------------------------*/
+
+/* Currently using mostly the same format from the APPS-PAGE */
+
+.Coding-Intro {
+    width: 75%;
+    margin: auto;
+}
+
+/*#endregion*/
+
+/*#region-----------------------ART-PAGE----------------------------------*/
+
+/* Currently using mostly the same format from the APPS-PAGE */
+
+.Art-Intro {
+    width: 100%;
+    margin: auto;
+}
+
+/*#region-----------------------Cards------------------------------------ */
+
+.Art-Gallery {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50px;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-auto-rows: 0px;
+}
+
+.Sector {
+    display: block;
+}
+
+.Art-Content {
+    width: 100%;
+    position: relative;
+}
+
+.Art-Card {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.Art-Card-Show {
+    display: block;
+}
+
+.Art-Card i {
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transition: .5s;
+    opacity: 0;
+    z-index: 1;
+    padding: 12px;
+}
+
+.Art-Card-Image img {
+    background-color: #eee;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.Art-Card-Image video {
+    background-color: #eee;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.Art-Image-Options {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: .5s;
+    opacity: 0;
+}
+
+.Art-Image-Options .Left-Bit {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    margin-left: 10px;
+    display: flex;
+}
+
+.Art-Image-Options .Right-Bit {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    margin-right: 10px;
+    display: flex;
+}
+
+.Left-Bit p {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    left: 45px;
+    font-size: 16px;
+    text-align: start;
+    color: #fff;
+    margin: 14px 10px;
+}
+
+/* .Right-Bit p {
+    position: absolute;
+    width: 90px;
+    height: 20px;
+    bottom: 3px;
+    right: 80px;
+    font-size: 16px;
+    text-align: end;
+    color: #1DB954;
+    font-weight: bold;
+    margin: 10px 10px;
+}
+
+.Right-Bit p:hover {
+    color: #42dbcf;
+} */
+
+.Art-Image-Options i {
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Art-Card-Info {
+    position: absolute;
+    width: 100%;
+    padding: 0px 25px 0px 25px;
+    top: 35%;
+    margin-top: -35px;
+    transition: .5s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Art-Card-Info .Info-Text {
+    opacity: 0;
+}
+
+.Art-Card-Info h2 {
+    color: white;
+    font-size: 22px;
+}
+
+.Art-Card-Info p {
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+.Art-Content:hover .Art-Image-Options {
+    opacity: 1;
+}
+
+.Art-Content:hover .Art-Card i {
+    opacity: 1;
+}
+
+.Art-Card i:hover~.Art-Card-Image {
+    filter: brightness(25%);
+}
+
+.Art-Card i:hover~.Art-Card-Info {
+    opacity: 1;
+    transform: translate(0, -15px);
+}
+
+/*#endregion */
+
+/*#endregion*/
+
+/*#region-----------------------MUSIC-PAGE--------------------------------*/
+
+/* Currently using mostly the same format from the APPS-PAGE */
+
+.Music-Intro {
+    width: 75%;
+    margin: auto;
+}
+
+/*#region-----------------------Cards------------------------------------ */
+
+.Music-Card-Container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Music-Card {
+    margin: 25px;
+    width: 320px;
+    height: 500px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: none;
+    position: relative;
+}
+
+.Music-Card:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+.Music-Card:hover .Music-Animation img {
+    transform: scale(1.11);
+}
+
+.Music-Card-Show {
+    display: block;
+}
+
+.Music-Card:hover .Layer-Links {
+    opacity: 1;
+    transform: translate(0, -15px);
+}
+
+.Music-Card-Image {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.Music-Card-Image img {
+    background-color: #eee;
+    width: 320px;
+    height: 300px;
+    display: block;
+    transition: 2s;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.Layer-Links i {
+    padding: 12px 35px;
+    margin: 20px;
+    font-size: 35px;
+    border-radius: 50px;
+}
+
+.Music-Card-Info {
+    width: 94%;
+    padding-top: 10px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.Music-Card-Info h2 {
+    color: #006969;
+    font-size: 23px;
+}
+
+.Music-Card-Info h4 {
+    text-align: center;
+}
+
+.Music-Card-Info p {
+    font-size: 15px;
+}
+
+/*#endregion */
+
+/*#endregion*/
+
+/*#region-----------------------CONTACT-PAGE------------------------------*/
+
+.Contact-Intro p {
+    width: 70%;
+}
+
+.More-Info-Links {
+    width: 50%;
+    margin: auto;
+}
+
+.More-Info-Links a {
+    margin: auto;
+    margin-bottom: 20px;
+    margin: 1px 15px 1px;
+    background: transparent;
+    color: #006969;
+    border-radius: 15px;
+    border: solid 2px #006969;
+    padding: 5px 20px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.More-Info-Links a:hover, .More-Info-Links a:focus, .More-Info-Links a:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+/* Centering this content is temporay until i set up address again, change back for responsives too (change center to space-between) */
+
+.Contact-Us {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Part {
+    margin: 0px 200px 0px 200px
+}
+
+.Contact-Form {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 0px 35px 10px 60px;
+    border-radius: 10px;
+}
+
+.Form-Input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Form-Input i {
+    position: absolute;
+    margin-left: -40px;
+    font-size: 20px;
+}
+
+.Form-Input input {
+    padding: 0px 10px 2px 10px;
+    width: 100%;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    opacity: .4;
+    border-bottom: 2px solid black;
+}
+
+.Form-Input textarea {
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    font-size: 18px;
+    outline: none;
+    opacity: .4;
+    border-radius: 10px;
+}
+
+.Form-Input input:focus, textarea:focus {
+    opacity: 1;
+}
+
+.Form-Button button {
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background: transparent;
+    color: #006969;
+    border-radius: 15px;
+    border: solid 2px #006969;
+    padding: 5px 15px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Form-Button button:hover, .Form-Button button:focus, .Form-Button button:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+/*#endregion*/
+
+/*#region-----------------------LEGAL-PAGE--------------------------------*/
+
+.Page {
+    padding-top: 100px;
+    width: 70%;
+    margin: auto;
+}
+
+.Page p {
+    font-size: 16px;
+}
+
+.Title h1 {
+    font-size: 40px;
+}
+
+.Title h2 {
+    font-weight: normal;
+    font-size: 16px;
+    color: gray;
+}
+
+.Contents {
+    padding-top: 25px;
+}
+
+.Contents h1 {
+    font-size: 40px;
+}
+
+.PrivacyTerms {
+    padding-top: 25px;
+}
+
+.PrivacyTerms h2 {
+    font-size: 30px;
+}
+
+.PrivacyTerms h3 {
+    padding-left: 25px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.PrivacyTerms h4 {
+    padding-left: 50px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/*#endregion*/
+
+/*#region-----------------------MISC--------------------------------------*/
+
+.Border {
+    background: linear-gradient(to left, rgb(31, 69, 73), rgb(106, 245, 255));
+    padding: 1 10px 0px 0px;
+    border-radius: 25px;
+    display: none;
+}
+
+.Latest-Links a:hover, .Latest-Links a:focus, .Latest-Links a:active {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+}
+
+.Back-To-Top a {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+}
+
+.Back-To-Top i {
+    background-color: rgb(65, 155, 161);
+    color: #fff;
+    font-size: 55px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ////////////////////////////////////////////////////////// */
+
+/*#region---------------------Pop-Ups------------------------ */
+
+.Popups-Overlay-Art {
+    position: fixed;
+    padding-top: 2%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+    overflow: auto;
+    --multiplier: calc(40rem - 100%);
+}
+
+.Popup-More-Content {
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition: opacity 2s ease-in-out;
+    text-align: center;
+}
+
+.Popup-More-Content h2 {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+.Popup-More-Content .Popup-Close {
+    position: absolute;
+    top: -25px;
+    left: 100%;
+    width: 40px;
+    height: 40px;
+    text-align: right;
+    font-size: 45px;
+    color: white;
+}
+
+.Popup-More-Content .Popup-Close:hover {
+    color: #888;
+}
+
+.Selected-Art-Card {
+    margin: auto;
+    width: calc(var(--multiplier) * -1);
+}
+
+.Section-Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.Section-Header i {
+    font-size: 40px;
+}
+
+.Section-Header .Artist-Name {
+    display: block;
+}
+
+.Section-Header .Artist-Name p {
+    font-size: 16px;
+    padding-left: 15px;
+    color: #333;
+}
+
+.Section-Header .Follow-Support {
+    display: inline-flex
+}
+
+.Section-Header .Follow-Support a {
+    color: #006969;
+    border: solid 1px #006969;
+    border-radius: 3px;
+    padding: 4px 10px 4px;
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.Section-Header .Spacer {
+    width: 35%;
+}
+
+.Section-Header .Like-Download_Top {
+    display: inline-flex;
+}
+
+.Section-Header .Like-Download_Top i {
+    font-size: 20px;
+}
+
+.Section-Header .Like-Download_Top a {
+    color: #006969;
+    border: solid 1px #006969;
+    border-radius: 3px;
+    padding: 4px 10px 4px;
+    margin-left: 20px;
+    font-size: 22px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.Section-Header a:hover, .Popup-More-Content .Top a:hover i {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+.Bottom-Section .Like-Download_Bottom {
+    display: none;
+}
+
+.Popup-More-Content .Bottom-Section .Text-Below {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Popup-More-Content .Bottom-Section .Text-Below p {
+    margin: 1px 10px 1px;
+    color: #666;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.Popup-More-Content .Bottom-Section .Share-Info a {
+    width: 100px;
+    background: transparent;
+    color: #006969;
+    border-radius: 3px;
+    border: solid 1px #006969;
+    padding: 5px 8px 5px;
+    margin: 1px 10px 1px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.Bottom-Section a:hover, .Bottom-Section a:hover i {
+    background: #00a0a0 !important;
+    border-color: #00a0a0 !important;
+    color: white;
+}
+
+/* //////////////////////////////////////////////////////////////// */
+
+.Popups-Overlay {
+    position: fixed;
+    padding-top: 5%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    transition: opacity 500ms ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+}
+
+.Popup-Content {
+    position: relative;
+    width: 40%;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition: opacity 2s ease-in-out;
+    text-align: center;
+}
+
+.Popup-Content h2 {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+.Popup-Content p {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #333;
+}
+
+.Popup-Content .Popup-Close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 30px;
+    color: #333;
+}
+
+.Popup-Content .Popup-Close:hover {
+    color: #888;
+}
+
+/*#endregion */
+
+/*#endregion*/
+
+/*#region-----------------------Responsive-Layout-------------------------*/
+
+@media screen and (max-width: 1800px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 85%;
+    }
+    /* ----------------------------Home Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slide-Show {
+        height: 80vh;
+    }
+    .Dots {
+        top: 90vh;
+    }
+    .Announce {
+        top: 45vh;
+    }
+    .Content {
+        width: 95%;
+    }
+    .Content h2 {
+        font-size: 40px;
+    }
+    .Content a {
+        font-size: 20px;
+    }
+    .Back-To-Top a {
+        bottom: 35px;
+        right: 35px;
+    }
+    .Back-To-Top i {
+        font-size: 55px;
+        width: 70px;
+        height: 70px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 98%;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 60%;
+    }
+    .Category {
+        width: 65%;
+    }
+    .Category p {
+        font-size: 20px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .Latest-Intro {
+        width: 40%;
+    }
+    .Latest-Links {
+        width: 30%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 25px;
+    }
+    .Art-Slider .Art img {
+        height: 275px;
+    }
+    .Art-Slider .Art video {
+        height: 275px;
+    }
+    .Apps-Slider .App img {
+        height: 405px;
+    }
+    .App p {
+        font-size: 20px;
+    }
+    .Art p {
+        font-size: 20px;
+    }
+    .Items-Link a {
+        width: 20%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        font-size: 60px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 30px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 20%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 100%;
+    }
+    .Section {
+        padding: 25px 25px;
+        display: inline-block;
+    }
+    .Section h2 {
+        font-size: 20px;
+    }
+    .count {
+        font-size: 45px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 80%;
+    }
+    .Apps-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Apps-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Art-Gallery {
+        width: 90%;
+        column-gap: 20px;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+    .Art-Card i {
+        font-size: 30px;
+    }
+    .Art-Image-Options i {
+        font-size: 25px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 45%;
+        margin-top: -45px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Art-Card-Info p {
+        font-size: 16px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 80%;
+    }
+    .Music-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Music-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 12px 35px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 50px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Intro p {
+        width: 70%;
+    }
+    .More-Info-Links {
+        width: 50%;
+        margin: auto;
+    }
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 200px 0px 200px
+    }
+    .Contact-Form {
+        width: 60%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 60px;
+    }
+    .Form-Input i {
+        font-size: 20px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 2%;
+    }
+    .Popup-More-Content {
+        width: 80%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Popup-More-Content .Popup-Close {
+        position: absolute;
+        top: -30px;
+        left: 100%;
+        width: 40px;
+        height: 40px;
+        text-align: right;
+        font-size: 40px;
+        color: white;
+    }
+    .Section-Header i {
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 16px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: 35%;
+    }
+    .Section-Header .Like-Download_Top i {
+        font-size: 20px;
+    }
+    .Section-Header .Like-Download_Top a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 22px;
+    }
+    .Popup-More-Content .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Popup-More-Content .Bottom-Section a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1460px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 70%;
+    }
+    .Slide-Show {
+        height: 75vh;
+    }
+    .Dots {
+        top: 80vh;
+    }
+    .Announce {
+        top: 40vh;
+    }
+    .Content {
+        width: 95%;
+    }
+    .Content h2 {
+        font-size: 35px;
+    }
+    .Content a {
+        font-size: 18px;
+    }
+    .Back-To-Top a {
+        bottom: 35px;
+        right: 35px;
+    }
+    .Back-To-Top i {
+        font-size: 55px;
+        width: 70px;
+        height: 70px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 95%;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 60%;
+    }
+    .Category {
+        width: 65%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .Latest-Intro {
+        width: 40%;
+    }
+    .Latest-Links {
+        width: 30%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 25px;
+    }
+    .Art-Slider .Art img {
+        height: 275px;
+    }
+    .Art-Slider .Art video {
+        height: 275px;
+    }
+    .Apps-Slider .App img {
+        height: 405px;
+    }
+    .App p {
+        font-size: 18px;
+    }
+    .Art p {
+        font-size: 18px;
+    }
+    .Items-Link a {
+        width: 20%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        font-size: 60px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 30px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 20%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 100%;
+    }
+    .Section {
+        padding: 25px 25px;
+        display: inline-block;
+    }
+    .Section h2 {
+        font-size: 18px;
+    }
+    .count {
+        font-size: 45px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 95%;
+    }
+    .Apps-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Apps-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Art-Gallery {
+        width: 95%;
+        column-gap: 20px;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+    .Art-Card i {
+        font-size: 30px;
+    }
+    .Art-Image-Options i {
+        font-size: 25px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 45%;
+        margin-top: -45px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Art-Card-Info p {
+        font-size: 16px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 95%;
+    }
+    .Music-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Music-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 12px 35px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 50px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Intro p {
+        width: 70%;
+    }
+    .More-Info-Links {
+        width: 50%;
+        margin: auto;
+    }
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 100px 0px 100px
+    }
+    .Contact-Form {
+        width: 70%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 60px;
+    }
+    .Form-Input i {
+        font-size: 20px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 2%;
+    }
+    .Popup-More-Content {
+        width: 80%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Popup-More-Content .Popup-Close {
+        position: absolute;
+        top: -25px;
+        left: 100%;
+        width: 40px;
+        height: 40px;
+        text-align: right;
+        font-size: 40px;
+        color: white;
+    }
+    .Section-Header i {
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 16px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1100px)!important;
+    }
+    .Section-Header .Like-Download_Top i {
+        font-size: 20px;
+    }
+    .Section-Header .Like-Download_Top a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 22px;
+    }
+    .Popup-More-Content .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Popup-More-Content .Bottom-Section a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 70%;
+    }
+    .Slide-Show {
+        height: 40vh;
+    }
+    .Dots {
+        top: 45vh;
+    }
+    .Announce {
+        top: 23vh;
+    }
+    .Content {
+        width: 95%;
+    }
+    .Content h2 {
+        font-size: 35px;
+    }
+    .Content a {
+        font-size: 18px;
+    }
+    .Back-To-Top a {
+        bottom: 35px;
+        right: 35px;
+    }
+    .Back-To-Top i {
+        font-size: 55px;
+        width: 70px;
+        height: 70px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 95%;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 60%;
+    }
+    .Category {
+        width: 65%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .Latest-Intro {
+        width: 40%;
+    }
+    .Latest-Links {
+        width: 30%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 25px;
+    }
+    .Art-Slider .Art img {
+        height: 245px;
+    }
+    .Art-Slider .Art video {
+        height: 245px;
+    }
+    .Apps-Slider .App img {
+        height: 355px;
+    }
+    .App p {
+        font-size: 18px;
+    }
+    .Art p {
+        font-size: 18px;
+    }
+    .Items-Link{
+        padding: 30px 0px 15px;
+    }
+    .Items-Link a {
+        width: 20%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        font-size: 60px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 30px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 20%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 100%;
+    }
+    .Section {
+        padding: 25px 25px;
+        display: inline-block;
+    }
+    .Section h2 {
+        font-size: 18px;
+    }
+    .count {
+        font-size: 45px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 90%;
+    }
+    .Apps-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Apps-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Art-Gallery {
+        width: 98%;
+        column-gap: 20px;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+    .Art-Card i {
+        font-size: 30px;
+    }
+    .Art-Image-Options i {
+        font-size: 25px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 45%;
+        margin-top: -45px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Art-Card-Info p {
+        font-size: 16px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 95%;
+    }
+    .Music-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Music-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 12px 35px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 50px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Intro p {
+        width: 70%;
+    }
+    .More-Info-Links {
+        width: 50%;
+        margin: auto;
+    }
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 50px 0px 50px
+    }
+    .Contact-Form {
+        width: 75%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 60px;
+    }
+    .Form-Input i {
+        font-size: 20px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 2%;
+    }
+    .Popup-More-Content {
+        width: 80%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Popup-More-Content .Popup-Close {
+        position: absolute;
+        top: -20px;
+        left: 100%;
+        width: 40px;
+        height: 40px;
+        text-align: right;
+        font-size: 35px;
+        color: white;
+    }
+    .Section-Header i {
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 16px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1050px)!important;
+    }
+    .Section-Header .Like-Download_Top i {
+        font-size: 20px;
+    }
+    .Section-Header .Like-Download_Top a {
+        padding: 4px 10px 4px;
+        margin-left: 20px;
+        font-size: 22px;
+    }
+    .Popup-More-Content .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Popup-More-Content .Bottom-Section a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 75%;
+    }
+    /* ----------------------------Dashboard------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Dashboard-Logo {
+        padding-top: 75px;
+    }
+    .Dashboard-Logo img {
+        width: 125px;
+        height: 125px;
+    }
+    .Dashboard-Name {
+        padding-top: 50px;
+        font-size: 30px;
+    }
+    .Dashboard-Links {
+        padding-top: 50px;
+    }
+    .Dashboard-Links a {
+        width: 60%;
+        margin-bottom: 20px;
+        background: #fff;
+        color: black;
+        border-radius: 10px;
+        border: solid 2px #fff;
+        padding: 10px 15px;
+        font-size: 30px;
+    }
+    .Dashboard-Icons i {
+        margin: 30px;
+        font-size: 65px;
+    }
+    .Slide-Show {
+        height: 30vh;
+    }
+    .Dots {
+        top: 35vh;
+    }
+    .Announce {
+        top: 18vh;
+    }
+    .Content {
+        width: 90%;
+    }
+    .Content h2 {
+        font-size: 25px;
+    }
+    .Content a {
+        font-size: 15px;
+    }
+    .Back-To-Top a {
+        bottom: 35px;
+        right: 35px;
+    }
+    .Back-To-Top i {
+        font-size: 55px;
+        width: 70px;
+        height: 70px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 95%;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 75%;
+    }
+    .Category {
+        width: 60%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: block;
+    }
+    .Latest-Intro {
+        width: 80%;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    .Latest-Links {
+        width: 50%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .App p {
+        font-size: 17px;
+    }
+    .Art p {
+        font-size: 17px;
+    }
+    .Items-Link a {
+        width: 25%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        font-size: 55px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 30px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 25%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 70%;
+    }
+    .Section {
+        padding: 25px 25px;
+        display: inline-block;
+    }
+    .Section h2 {
+        font-size: 16px;
+    }
+    .count {
+        font-size: 40px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 100%;
+    }
+    .Apps-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Apps-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 97%;
+    }
+    .Art-Gallery {
+        width: 100%;
+        column-gap: 20px;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    .Art-Card i {
+        font-size: 30px;
+    }
+    .Art-Image-Options i {
+        font-size: 25px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 45%;
+        margin-top: -45px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Art-Card-Info p {
+        font-size: 16px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 100%;
+    }
+    .Music-Card {
+        margin: 25px;
+        width: 320px;
+        height: 500px;
+    }
+    .Music-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 12px 35px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 50px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Intro p {
+        width: 90%;
+    }
+    .More-Info-Links {
+        width: 50%;
+        margin: auto;
+    }
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 50px 0px 50pxs
+    }
+    .Contact-Form {
+        width: 85%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 60px;
+    }
+    .Form-Input i {
+        font-size: 20px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 0%;
+    }
+    .Popup-More-Content {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        border-radius: 3px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Top-Section .Popup-Close {
+        position: absolute;
+        top: 10px;
+        left: 95%;
+        width: 40px;
+        text-align: right;
+        font-size: 35px;
+        color: black;
+    }
+    .Art-Card {
+        width: auto;
+    }
+    .Section-Header {
+        display: block;
+    }
+    .Section-Header i {
+        padding-left: 10px;
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name {
+        display: inline-block;
+        padding-top: 15px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 14px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support {
+        display: block;
+        padding-top: 10px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 2px 8px 2px;
+        margin-left: 12px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1050px)!important;
+    }
+    .Section-Header .Like-Download_Top {
+        display: none;
+    }
+    .Bottom-Section .Like-Download_Bottom {
+        display: block;
+        padding-top: 15px;
+        margin-bottom: 50px;
+    }
+    .Bottom-Section .Like-Download_Bottom i {
+        font-size: 20px;
+    }
+    .Bottom-Section .Like-Download_Bottom a {
+        color: #006969;
+        border: solid 1px #006969;
+        border-radius: 3px;
+        padding: 10px 10px 10px;
+        font-size: 22px;
+        font-weight: 500;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+    .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+    .Bottom-Section .Share-Info {
+        padding-bottom: 100px;
+    }
+    .Bottom-Section .Share-Info a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 784px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 80%;
+    }
+    .Scroll-Controls {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px 0 10px;
+    }
+    .Scroll-Tab {
+        width: 33%;
+        height: 50px;
+        margin-top: 20px;
+        font-size: 25px;
+    }
+    /* ----------------------------Dashboard------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Dashboard-Logo {
+        padding-top: 75px;
+    }
+    .Dashboard-Logo img {
+        width: 125px;
+        height: 125px;
+    }
+    .Dashboard-Name {
+        padding-top: 50px;
+        font-size: 25px;
+    }
+    .Dashboard-Links {
+        padding-top: 50px;
+    }
+    .Dashboard-Links a {
+        width: 75%;
+        margin-bottom: 20px;
+        background: #fff;
+        color: black;
+        border-radius: 10px;
+        border: solid 2px #fff;
+        padding: 10px 15px;
+        font-size: 25px;
+    }
+    .Dashboard-Icons i {
+        margin: 30px;
+        font-size: 60px;
+    }
+    /* ------------------------Navigation/ Popups------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay {
+        padding-top: 45%;
+    }
+    .Popup-Content {
+        width: 70%;
+    }
+    /* ///////////////////////////////////////////////////////////// */
+    .Nav-Button:hover {
+        color: #000;
+        background: transparent;
+    }
+    label.Nav-Menu {
+        height: 45px;
+        width: 30px;
+    }
+    label.Nav-Menu>i {
+        width: 100%;
+        height: 4px;
+    }
+    label.Nav-Menu>i:before, label.Nav-Menu>i:after {
+        height: 4px;
+    }
+    label.Nav-Menu>i:before {
+        transform: translate(-50%, -10.5px);
+    }
+    label.Nav-Menu>i:after {
+        transform: translate(-50%, 10.5px);
+    }
+    .Mini-Contact {
+        right: 30px;
+    }
+    .Mini-Dashboard {
+        right: 30px;
+    }
+    /* //////////////////////////////////////////////////////////////////////////// */
+    .Header {
+        position: fixed;
+        width: 100%;
+        height: 45px;
+        margin: 0;
+        overflow: hidden;
+        z-index: 2;
+        top: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0px;
+        background: white
+    }
+    .Company-Name {
+        font-size: 25px;
+        color: #333;
+    }
+    .First-Box {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .Slide-Show {
+        width: 100%;
+        height: 50vh;
+        margin: auto;
+        border-radius: 10px;
+    }
+    .Dots {
+        position: relative;
+        left: 50%;
+        top: -3vh;
+        margin: center;
+    }
+    .Announce {
+        position: relative;
+        left: 5%;
+        top: -3vh;
+        margin: center;
+        width: 90%;
+        padding-top: 50px;
+    }
+    .Announce p {
+        width: 100%;
+    }
+    .Content {
+        width: 90%;
+    }
+    .Content h2 {
+        font-size: 20px;
+    }
+    .Content a {
+        font-size: 15px;
+    }
+    .NextPrev {
+        opacity: 0;
+    }
+    .Back-To-Top a {
+        bottom: 30px;
+        right: 25px;
+    }
+    .Back-To-Top i {
+        font-size: 45px;
+        width: 65px;
+        height: 65px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+        border-radius: 10px;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 85%;
+    }
+    .About-Break {
+        display: block;
+    }
+    .Category {
+        width: 80%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: block;
+    }
+    .Latest-Intro {
+        width: 95%;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    .Latest-Links {
+        width: 70%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 25px;
+    }
+    .Art-Slider .Art img {
+        height: 205px;
+    }
+    .Art-Slider .Art video {
+        height: 205px;
+    }
+    .Apps-Slider .App img {
+        height: 305px;
+    }
+    .App p {
+        font-size: 16px;
+    }
+    .Art p {
+        font-size: 16px;
+    }
+    .Items-Link{
+        padding: 25px 0px 12px;
+    }
+    .Items-Link a {
+        width: 35%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        font-size: 45px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 75px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 30%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 85%;
+    }
+    .Section {
+        padding: 10px 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    .Section h2 {
+        font-size: 18px;
+    }
+    .count {
+        font-size: 45px;
+    }
+    .Horizontal-Scroll {
+        overflow-x: scroll;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 100%;
+    }
+    .Apps-Card {
+        margin: 25px 15px 25px 15px;
+        width: 320px;
+        height: 500px;
+    }
+    .Apps-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+    }
+    .Art-Gallery {
+        width: 100%;
+        column-gap: 20px;
+        row-gap: 35px;
+        grid-template-columns: repeat(auto-fill, minmax(382px, 1fr));
+        grid-auto-rows: auto;
+    }
+    .Art-Card i {
+        font-size: 40px;
+        opacity: 1;
+    }
+    .Art-Image-Options:hover {
+        opacity: 1;
+    }
+    .Art-Image-Options i {
+        font-size: 30px;
+    }
+    .Left-Bit p {
+        width: 200px;
+        height: 20px;
+        bottom: 15px;
+        left: 70px;
+        font-size: 25px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 40%;
+        margin-top: -40px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 26px;
+    }
+    .Art-Card-Info p {
+        font-size: 22px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 100%;
+    }
+    .Music-Card {
+        margin: 25px 15px 25px 15px;
+        width: 320px;
+        height: 500px;
+    }
+    .Music-Card-Image img {
+        width: 320px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 12px 35px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 50px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Intro p {
+        width: 92%;
+    }
+    .More-Info-Links {
+        width: 100%;
+        margin: auto;
+    }
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 50px 0px 50px
+    }
+    .Border {
+        padding: 2px 200px 2px 200px;
+        margin: 10px 400px 20px 400px;
+        display: block;
+    }
+    .Contact-Form {
+        width: 95%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 60px;
+    }
+    .Form-Input i {
+        font-size: 20px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 0%;
+    }
+    .Popup-More-Content {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        border-radius: 3px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Top-Section .Popup-Close {
+        position: absolute;
+        top: 10px;
+        left: 92%;
+        width: 40px;
+        text-align: right;
+        font-size: 35px;
+        color: black;
+    }
+    .Art-Card {
+        width: auto;
+    }
+    .Section-Header {
+        display: block;
+    }
+    .Section-Header i {
+        padding-left: 10px;
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name {
+        display: inline-block;
+        padding-top: 15px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 14px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support {
+        display: block;
+        padding-top: 10px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 2px 8px 2px;
+        margin-left: 12px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1050px)!important;
+    }
+    .Section-Header .Like-Download_Top {
+        display: none;
+    }
+    .Bottom-Section .Like-Download_Bottom {
+        display: block;
+        padding-top: 15px;
+        margin-bottom: 50px;
+    }
+    .Bottom-Section .Like-Download_Bottom i {
+        font-size: 20px;
+    }
+    .Bottom-Section .Like-Download_Bottom a {
+        color: #006969;
+        border: solid 1px #006969;
+        border-radius: 3px;
+        padding: 10px 10px 10px;
+        font-size: 22px;
+        font-weight: 500;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+    .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Bottom-Section .Share-Info {
+        padding-bottom: 100px;
+    }
+    .Bottom-Section .Share-Info a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 88%;
+    }
+    .Scroll-Tab {
+        width: 33%;
+        height: 50px;
+        margin-top: 20px;
+        font-size: 25px;
+    }
+    /* ----------------------------Dashboard------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Dashboard-Logo {
+        padding-top: 50px;
+    }
+    .Dashboard-Logo img {
+        width: 85px;
+        height: 85px;
+    }
+    .Dashboard-Name {
+        padding-top: 30px;
+        font-size: 20px;
+    }
+    .Dashboard-Links {
+        padding-top: 30px;
+    }
+    .Dashboard-Links a {
+        width: 75%;
+        margin-bottom: 22px;
+        background: #fff;
+        color: black;
+        border-radius: 10px;
+        border: solid 2px #fff;
+        padding: 5px 15px;
+        font-size: 20px;
+    }
+    .Dashboard-Icons i {
+        margin: 15px;
+        font-size: 40px;
+    }
+    /* ------------------------Navigation/ Popups------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay {
+        padding-top: 50%;
+    }
+    .Popup-Content {
+        width: 80%;
+    }
+    .Popup-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Popup-Content p {
+        margin-top: 10px;
+        margin-bottom: 25px;
+        font-size: 18px;
+    }
+    .Popup-Content .Popup-Close {
+        font-size: 30px;
+    }
+    /* ///////////////////////////////////////////////////////////////////////// */
+    label.Nav-Menu {
+        height: 45px;
+        width: 28px;
+    }
+    label.Nav-Menu>i {
+        width: 100%;
+        height: 3px;
+    }
+    label.Nav-Menu>i:before, label.Nav-Menu>i:after {
+        height: 3px;
+    }
+    label.Nav-Menu>i:before {
+        transform: translate(-50%, -8.5px);
+    }
+    label.Nav-Menu>i:after {
+        transform: translate(-50%, 8.5px);
+    }
+    /* //////////////////////////////////////////////////////////////////////////// */
+    .Header {
+        position: fixed;
+        width: 100%;
+        height: 45px;
+        margin: 0;
+        overflow: hidden;
+        z-index: 2;
+        top: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0px;
+        background: white
+    }
+    .Company-Name {
+        font-size: 25px;
+        color: #333;
+    }
+    .First-Box {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 35px;
+    }
+    .Slide-Show {
+        width: 100%;
+        height: 50vh;
+        margin: auto;
+        border-radius: 10px;
+    }
+    .Dots {
+        position: relative;
+        left: 50%;
+        top: -3vh;
+        margin: center;
+    }
+    .Announce {
+        position: relative;
+        left: 5%;
+        top: -3vh;
+        margin: center;
+        width: 90%;
+        padding-top: 50px;
+    }
+    .Announce p {
+        width: 100%;
+    }
+    .Content {
+        width: 90%;
+    }
+    .Content h2 {
+        font-size: 25px;
+    }
+    .Content a {
+        font-size: 18px;
+    }
+    .NextPrev {
+        opacity: 0;
+    }
+    .Back-To-Top a {
+        bottom: 30px;
+        right: 25px;
+    }
+    .Back-To-Top i {
+        font-size: 45px;
+        width: 65px;
+        height: 65px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+        border-radius: 10px;
+        padding-bottom: 25px;
+    }
+    .About {
+        width: 85%;
+    }
+    .Category {
+        width: 80%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: block;
+    }
+    .Latest-Intro {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    .Latest-Links {
+        width: 90%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 15px;
+    }
+    .Art-Slider .Art img {
+        height: 225px;
+    }
+    .Art-Slider .Art video {
+        height: 225px;
+    }
+    .Apps-Slider .App img {
+        height: 290px;
+    }
+    .App p {
+        font-size: 15px;
+    }
+    .Art p {
+        font-size: 15px;
+    }
+    .Items-Link{
+        padding: 20px 0px 10px;
+    }
+    .Items-Link a {
+        width: 45%;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        margin: 15px;
+        font-size: 35px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 100px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 45%;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 90%;
+    }
+    .Section {
+        padding: 2px 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    .Section h2 {
+        font-size: 20px;
+    }
+    .count {
+        font-size: 50px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 100%;
+    }
+    .Apps-Card {
+        margin: 25px 0px 25px 0px;
+        width: 360px;
+        height: 480px;
+    }
+    .Apps-Card-Image img {
+        width: 360px;
+        height: 300px;
+    }
+    .Layer-Links {
+        height: 300px;
+    }
+    .Layer-Links img {
+        width: 145px;
+        height: 50px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+    }
+    .Art-Gallery {
+        width: 100%;
+        column-gap: 20px;
+        row-gap: 35px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: auto;
+    }
+    .Art-Card i {
+        font-size: 30px;
+        opacity: 1;
+    }
+    .Art-Image-Options:hover {
+        opacity: 1;
+    }
+    .Art-Image-Options i {
+        font-size: 25px;
+    }
+    .Left-Bit p {
+        width: 200px;
+        height: 20px;
+        bottom: 3px;
+        left: 45px;
+        font-size: 18px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 40%;
+        margin-top: -40px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Art-Card-Info p {
+        font-size: 16px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 100%;
+    }
+    .Music-Card {
+        margin: 25px 0px 25px 0px;
+        width: 360px;
+        height: 480px;
+    }
+    .Music-Card-Image img {
+        width: 360px;
+        height: 300px;
+    }
+    .Layer-Links i {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 35px;
+        border-radius: 15px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 50px 0px 50px;
+    }
+    .Border {
+        padding: 2px 150px 2px 150px;
+        margin: 10px 400px 20px 400px;
+        display: block;
+    }
+    .Contact-Form {
+        width: 100%;
+        margin-top: 20px;
+        padding: 0px 35px 10px 45px;
+    }
+    .Form-Input i {
+        margin-left: -30px;
+        font-size: 15px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 0%;
+    }
+    .Popup-More-Content {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        border-radius: 3px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Top-Section .Popup-Close {
+        position: absolute;
+        top: 10px;
+        left: 88%;
+        width: 40px;
+        text-align: right;
+        font-size: 35px;
+        color: black;
+    }
+    .Art-Card {
+        width: auto;
+    }
+    .Section-Header {
+        display: block;
+    }
+    .Section-Header i {
+        padding-left: 10px;
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name {
+        display: inline-block;
+        padding-top: 15px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 14px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support {
+        display: block;
+        padding-top: 10px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 2px 8px 2px;
+        margin-left: 12px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1050px)!important;
+    }
+    .Section-Header .Like-Download_Top {
+        display: none;
+    }
+    .Bottom-Section .Like-Download_Bottom {
+        display: block;
+        padding-top: 15px;
+        margin-bottom: 50px;
+    }
+    .Bottom-Section .Like-Download_Bottom i {
+        font-size: 20px;
+    }
+    .Bottom-Section .Like-Download_Bottom a {
+        color: #006969;
+        border: solid 1px #006969;
+        border-radius: 3px;
+        padding: 10px 10px 10px;
+        font-size: 20px;
+        font-weight: 500;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+    .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Bottom-Section .Share-Info {
+        padding-bottom: 100px;
+    }
+    .Bottom-Section .Share-Info a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    /* [Page] is used for the Legal Pages (Privacy and Terms) */
+    .Page {
+        width: 85%;
+    }
+    .Scroll-Tab {
+        width: 33%;
+        height: 40px;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    .Scroll-Controls i {
+        border-radius: 10px;
+        font-size: 15px;
+        width: 30px;
+        height: 25px;
+        padding: 0px 15px 0px 15px;
+        margin-bottom: 25px;
+    }
+    /* ----------------------------Dashboard------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Dashboard-Logo {
+        padding-top: 25px;
+    }
+    .Dashboard-Logo img {
+        width: 50px;
+        height: 50px;
+    }
+    .Dashboard-Name {
+        padding-top: 20px;
+        font-size: 15px;
+    }
+    .Dashboard-Links {
+        padding-top: 20px;
+    }
+    .Dashboard-Links a {
+        width: 75%;
+        margin-bottom: 15px;
+        background: #fff;
+        color: black;
+        border-radius: 10px;
+        border: solid 2px #fff;
+        padding: 5px 15px;
+        font-size: 14px;
+    }
+    .Dashboard-Icons i {
+        margin: 12px;
+        font-size: 30px;
+    }
+    /* ------------------------Navigation/ Popups------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay {
+        padding-top: 30%;
+    }
+    .Popup-Content {
+        width: 80%;
+    }
+    /* //////////////////////////////////////////////////////////////////////// */
+    .Side-Nav {
+        width: 200px;
+    }
+    .Side-Nav .Nav-Button {
+        font-size: 20px;
+    }
+    label.Nav-Menu {
+        height: 38px;
+        width: 25px;
+    }
+    label.Nav-Menu>i {
+        width: 90%;
+        height: 3px;
+    }
+    label.Nav-Menu>i:before, label.Nav-Menu>i:after {
+        height: 3px;
+    }
+    label.Nav-Menu>i:before {
+        transform: translate(-50%, -8px);
+    }
+    label.Nav-Menu>i:after {
+        transform: translate(-50%, 8px);
+    }
+    /* /////////////////////////////////////////////////////////// */
+    .Mini-Border {
+        padding: 1px 76px 1px 76px;
+        margin-top: 30px;
+    }
+    .Mini-Contact {
+        right: 25px;
+        font-size: 12px;
+    }
+    .Mini-Dashboard {
+        right: 25px;
+        font-size: 12px;
+    }
+    .Mini-Social {
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+    }
+    .Mini-Social i {
+        padding: 12px;
+        margin-top: 75px;
+        color: black;
+        transform: translatex(-50vw);
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Header {
+        height: 40px;
+    }
+    .Company-Name {
+        font-size: 21px;
+    }
+    .Side-Menu {
+        padding: 5px 15px;
+    }
+    .Side-Menu i {
+        font-size: 20px;
+    }
+    .Back-To-Top a {
+        bottom: 20px;
+        right: 20px;
+    }
+    .Back-To-Top i {
+        font-size: 35px;
+        width: 55px;
+        height: 55px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Content {
+        width: 85%;
+    }
+    .Content h2 {
+        font-size: 30px;
+    }
+    .Content a {
+        font-size: 15px;
+    }
+    .NextPrev {
+        opacity: 0;
+    }
+    .next-prev-button button {
+        opacity: 0;
+    }
+    /* ------------------------Home Page------------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+        border-radius: 10px;
+        padding-bottom: 25px;
+    }
+    .Box h2 {
+        font-size: 30px;
+    }
+    .Box p {
+        font-size: 15px;
+    }
+    .About {
+        width: 90%;
+    }
+    .Category {
+        width: 80%;
+    }
+    .Category p {
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Latest {
+        width: 90%;
+        height: auto;
+        display: block;
+    }
+    .Latest-Intro {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    .Latest-Links a {
+        width: 80%;
+        font-size: 15px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Slider-Container {
+        padding: 0 15px;
+    }
+    .Art-Slider .Art img {
+        height: 175px;
+    }
+    .Art-Slider .Art video {
+        height: 175px;
+    }
+    .Apps-Slider .App img {
+        height: 225px;
+    }
+    .App p {
+        font-size: 15px;
+    }
+    .Art p {
+        font-size: 15px;
+    }
+    .Items-Link{
+        padding: 20px 0px 10px;
+    }
+    .Items-Link a {
+        width: 60%;
+        font-size: 15px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Social-Links i {
+        margin: 10px;
+        font-size: 30px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Closer {
+        padding-bottom: 100px;
+    }
+    .Close {
+        font-size: 15px;
+    }
+    .Close a {
+        font-size: 12px;
+    }
+    .Contact a {
+        width: 60%;
+        font-size: 15px;
+    }
+    /* ----------------------------Apps/Games Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Count-Ups {
+        width: 100%;
+    }
+    .Section {
+        padding: 5px 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    .Section h2 {
+        font-size: 15px;
+    }
+    .count {
+        font-size: 40px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    #Drop-Button {
+        width: 150px;
+        font-size: 18px;
+    }
+    /* /////////////////////////////////////////////////////////////////// */
+    .Apps-Card-Container {
+        width: 100%;
+    }
+    .Apps-Card {
+        margin: 15px 0px 15px 0px;
+        width: 300px;
+        height: 420px;
+    }
+    .Apps-Card-Image img {
+        width: 300px;
+        height: 250px;
+    }
+    .Layer-Links {
+        height: 260px;
+    }
+    .Layer-Links img {
+        width: 120px;
+        height: 40px;
+        margin: 5px;
+    }
+    .Apps-Card-Info h2 {
+        font-size: 20px;
+    }
+    .Apps-Card-Info h4 {
+        text-align: center;
+    }
+    .Apps-Card-Info p {
+        font-size: 12px;
+    }
+    /* ----------------------------Art Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Box {
+        width: 100%;
+    }
+    .Art-Gallery {
+        width: 100%;
+        column-gap: 20px;
+        row-gap: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-auto-rows: auto;
+    }
+    .Art-Card i {
+        font-size: 25px;
+        opacity: 1;
+    }
+    .Art-Image-Options:hover {
+        opacity: 1;
+    }
+    .Art-Image-Options i {
+        font-size: 20px;
+    }
+    .Left-Bit p {
+        width: 150px;
+        height: 20px;
+        bottom: 0px;
+        left: 45px;
+        font-size: 15px;
+    }
+    .Art-Card-Info {
+        padding: 0px 25px 0px 25px;
+        top: 45%;
+        margin-top: -45px;
+    }
+    .Art-Card-Info h2 {
+        font-size: 17px;
+    }
+    .Art-Card-Info p {
+        font-size: 13px;
+    }
+    /* ----------------------------Music Page------------------------------- */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Music-Card-Container {
+        width: 100%;
+    }
+    .Music-Card {
+        margin: 15px 5px 15px 5px;
+        width: 300px;
+        height: 450px;
+    }
+    .Music-Card-Image img {
+        width: 300px;
+        height: 250px;
+    }
+    .Layer-Links i {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 30px;
+        border-radius: 15px;
+    }
+    .Music-Card-Info h2 {
+        font-size: 23px;
+    }
+    .Music-Card-Info p {
+        font-size: 15px;
+    }
+    /* ----------------------------Contact Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Contact-Us {
+        justify-content: center;
+    }
+    .Part {
+        margin: 0px 50px 0px 50px
+    }
+    .Border {
+        padding: 2px 100px 2px 100px;
+        margin: 10px 400px 20px 400px;
+        display: block;
+    }
+    .Contact-Form {
+        width: 100%;
+        margin-top: 20px;
+        padding: 0px 30px 10px 40px;
+    }
+    .Form-Input input {
+        font-size: 13px;
+    }
+    .Form-Input i {
+        margin-left: -25px;
+        font-size: 13px;
+    }
+    .Form-Button button {
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+        font-size: 15px;
+    }
+    /* ----------------------------Selected Art Page------------------------ */
+    /* /////////////////////////////////////////////////////////////////// */
+    .Popups-Overlay-Art {
+        padding-top: 0%;
+    }
+    .Popup-More-Content {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        border-radius: 3px;
+    }
+    .Popup-More-Content h2 {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .Top-Section .Popup-Close {
+        position: absolute;
+        top: 10px;
+        left: 85%;
+        width: 40px;
+        text-align: right;
+        font-size: 35px;
+        color: black;
+    }
+    .Art-Card {
+        width: auto;
+    }
+    .Section-Header {
+        display: block;
+    }
+    .Section-Header i {
+        padding-left: 10px;
+        font-size: 40px;
+    }
+    .Section-Header .Artist-Name {
+        display: inline-block;
+        padding-top: 15px;
+    }
+    .Section-Header .Artist-Name p {
+        font-size: 14px;
+        padding-left: 15px;
+    }
+    .Section-Header .Follow-Support {
+        display: block;
+        padding-top: 10px;
+    }
+    .Section-Header .Follow-Support a {
+        padding: 2px 8px 2px;
+        margin-left: 12px;
+        font-size: 15px;
+    }
+    .Section-Header .Spacer {
+        width: calc(100vw - 1050px)!important;
+    }
+    .Section-Header .Like-Download_Top {
+        display: none;
+    }
+    .Bottom-Section .Like-Download_Bottom {
+        display: block;
+        padding-top: 15px;
+        margin-bottom: 50px;
+    }
+    .Bottom-Section .Like-Download_Bottom i {
+        font-size: 20px;
+    }
+    .Bottom-Section .Like-Download_Bottom a {
+        color: #006969;
+        border: solid 1px #006969;
+        border-radius: 3px;
+        padding: 10px 10px 10px;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+    .Bottom-Section .Text-Below p {
+        margin: 1px 10px 1px;
+        font-size: 12px;
+    }
+    .Bottom-Section .Share-Info {
+        padding-bottom: 100px;
+    }
+    .Bottom-Section .Share-Info a {
+        width: 100px;
+        padding: 5px 8px 5px;
+        margin: 1px 10px 1px;
+        font-size: 15px;
+    }
+}
+
+/*#endregion*/

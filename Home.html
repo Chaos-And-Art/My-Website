@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Chaos & Art</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chaos & Art is a studio focussed on bringing Apps, Art, and Music to people all around the world.
+    Our mission is to share some of our creations, and then inspire others to make pieces of their own
+    chaos and art. We also work with others to fulfill business inquiries, and aid in creating or
+    promoting content.">
+
+    <!--Carousel-->
+    <link rel="stylesheet" href="/css/tiny-slider.css">
+
+    <!--Style-->
+    <link rel="stylesheet" href="/css/Style.css">
+    <link rel="stylesheet" href="/css/fontawesome-free-5.13.1-web/css/all.css">
+
+</head>
+
+<html lang="en">
+
+<body>
+    <!--#region Navigation-->
+    <div class="Header">
+        <a href="https://chaosandart.studio/" class="Company-Name Nav-Button">Chaos & Art</a>
+        <nav class="Top-Nav">
+            <a href="/Home.html" class="Nav-Button Active-Page">Home</a>
+            <a class="Nav-Button Chaos-Popup">Chaos</a>
+            <a href="/Art/Recent.html" class="Nav-Button">Art</a>
+            <a href="/Apps.html" class="Nav-Button">Apps</a>
+            <a class="Nav-Button Music-Popup">Music</a>
+        </nav>
+    </div>
+
+    <input id="Nav-Menu" class="Nav-Menu" type="checkbox" />
+    <label class="Nav-Menu" for="Nav-Menu">
+        <i></i>
+    </label>
+    <nav class="Side-Nav">
+        <div class="Nav-Content">
+            <div class="Nav-Links">
+                <a href="/Home.html" class="Nav-Button Active-Page">Home</a>
+                <a class="Nav-Button Chaos-Popup">Chaos</a>
+                <a href="/Art/Recent.html" class="Nav-Button">Art</a>
+                <a href="/Apps.html" class="Nav-Button">Apps</a>
+                <a class="Nav-Button Music-Popup">Music</a>
+            </div>
+
+            <div class="Mini-Social">
+                <div class="Mini-Border">-</div>
+                <a class="Mini-Contact" href="/Contact.html">CONTACT US</a>
+                <!-- <a href="https://www.youtube.com/channel/UCiKZ7lGT_YsVageXRisVCOA"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/chaos.and.art_/"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/_ChaosAndArt_"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/Chaos-And-Art"><i class="fab fa-github"></i></a> -->
+                <a class="Mini-Dashboard" href="/Dashboard.html">DASHBOARD</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="Back-To-Top">
+        <a id="back-top" onclick="toTop()"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+    <!--#endregion -->
+
+    <!-- #region Popups -->
+
+    <div class="Popup-Chaos">
+        <div class="Popups-Overlay">
+            <div class="Popup-Content">
+                <i class="far fa-times-circle Popup-Close"></i>
+                <h2>Chaos Coming Soon!</h2>
+                <p>The Chaos page is currently in development, but will be available in the near future!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="Popup-Music">
+        <div class="Popups-Overlay">
+            <div class="Popup-Content">
+                <i class="far fa-times-circle Popup-Close"></i>
+                <h2>Music Coming Soon!</h2>
+                <p>The Music page is currently in development, but will be available in the near future!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+
+    <!--#region Slide-Show-->
+    <div class="First-Box">
+        <div class="Slide-Show">
+            <div class="Slide Img1">
+                <div class="Content">
+                    <h2>CHAOS & ART!</h2>
+                    <h3 style="width: 90%; margin: auto;">CREATIONS DERIVED FROM TIME :)</h3>
+                </div>
+            </div>
+
+            <div class="Slide Img2">
+                <div class="Content">
+                    <h2>APPS AND GAMES MADE!</h2>
+                    <a href="/Apps.html">APPS AND GAMES</a>
+                </div>
+            </div>
+
+            <div class="Slide Img3">
+                <div class="Content">
+                    <h2>ART CREATED OR CAPTURED!</h2>
+                    <a href="/Art/Recent.html">ART AND PHOTOGRAPHY</a>
+                </div>
+            </div>
+
+            <div class="Slide Img4">
+                <div class="Content">
+                    <h2>MUSIC, SOFTWARE, AND MORE CONTENT COMING SOON! STAY TUNED!</h2>
+                    <!-- <h2>¯\_(ツ)_/¯</h2> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="Dots">
+            <span class="dot" onclick='currentSlide(1)'></span>
+            <span class="dot" onclick='currentSlide(2)'></span>
+            <span class="dot" onclick='currentSlide(3)'></span>
+            <span class="dot" onclick='currentSlide(4)'></span>
+        </div>
+
+        <div class="Announce">
+            <h2>Announcements</h2>
+            <p>No announcements or new things to mention at this time. </p>
+        </div>
+
+    </div>
+    <!--#endregion-->
+
+    <!--#region About-->
+    <div class="Box">
+        <div class="About">
+            <h2>ABOUT</h2>
+            <p>Chaos & Art is a studio focussed on bringing Chaos, Art, Apps, and Music to all who are interested.
+                <br class="About-Break">
+                <br class="About-Break">
+                Our mission is to share some of our creations, and then inspire others to make pieces of their own
+                chaos and art.
+                <br class="About-Break">
+                <br class="About-Break">
+                In the distant future, we also hope to work with others to fulfill business inquiries, and aid in
+                creating or
+                promoting content. We appreciate all the love and support!
+            </p>
+        </div>
+    </div>
+    <!--#endregion-->
+
+    <!--#region Latest-->
+    <!-- <div class="Box">
+        <h2>THE LATEST</h2>
+        <div class="Latest">
+            <div class="Latest-Intro">
+                <p>Currently we are working on refining and perfecting this website to be as user friendly as possible.
+                    <br>
+                    <br>
+                    In the meantime you can explore some of the other sections of our website.
+                </p>
+            </div>
+
+            <div class="Latest-Links">
+                <a href="Apps.html">APPS AND GAMES</a>
+                <a href="Coding.html">SOFTWARE</a>
+                <a href="Art.html">ART AND PHOTOGRAPHY</a>
+            </div>
+        </div>
+    </div> -->
+    <!--#endregion -->
+
+    <!--#region Apps-->
+    <div class="Box Slider-Container">
+        <h2>APPS</h2>
+        Apps and games will be coming soon!
+        <div class="my-slider Apps-Slider">
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>Basic Balls</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>2048</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>Random Spinner</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>Notes</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>Weather</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>RicoShape</p>
+            </div>
+
+            <div class="App">
+                <a href="/Apps.html"> <img src="/Images-Videos/_images/Extras/_Blank.jpg"></a>
+                <p>Coming Soon</p>
+            </div>
+        </div>
+
+        <div class="Items-Link">
+            <a href="/Apps.html">VIEW MORE</a>
+        </div>
+    </div>
+
+
+    <!--#endregion-->
+
+    <!--#region Art-->
+
+    <div class="Box Slider-Container">
+        <h2>Art</h2>
+        <div class="my-slider Art-Slider">
+
+            <div class="Art">
+                <a href="/Art/Photos.html"> <img class="lazy" alt="Art-1"
+                        src="/Images-Videos/_images/Small/Landscape/small_village.jpg"
+                        data-src="/Images-Videos/_images/Large/Landscape/large_village.jpg">
+                </a>
+                <p>Photo</p>
+            </div>
+
+            <div class="Art">
+                <a href="/Art/Paintings.html"> <img class="lazy" alt="Art-1"
+                        src="/Images-Videos/_images/Small/Landscape/small_painting_digital_valley.jpg"
+                        data-src="/Images-Videos/_images/Large/Landscape/large_painting_digital_valley.jpg">
+                </a>
+                <p>Painting</p>
+            </div>
+
+            <div class="Art">
+                <a href="/Art/Photos.html"> <img class="lazy" alt="Art-1" src="/Images-Videos/_images/Small/Landscape/small_ferns.jpg"
+                        data-src="/Images-Videos/_images/Large/Landscape/large_ferns.jpg">
+                </a>
+                <p>Photo</p>
+            </div>
+
+            <div class="Art">
+                <a href="/Art/Drawings.html"> <img class="lazy" alt="Art-1"
+                        src="/Images-Videos/_images/Small/Portrait/small_drawing_huskyPuppy.jpg"
+                        data-src="/Images-Videos/_images/Large/Portrait/large_drawing_huskyPuppy.jpg">
+                </a>
+                <p>Drawing</p>
+            </div>
+
+            <div class="Art">
+                <a href="/Art/Videos.html">
+                    <video class="lazy" alt="Ocean" autoplay loop>
+                        <source src="/Images-Videos/_videos/Large/Landscape/large_flowingWater.mp4" type="video/mp4">
+                    </video>
+                </a>
+                <p>Video</p>
+            </div>
+
+            <div class="Art">
+                <a href="/Art/Photos.html"> <img class="lazy" alt="Art-1"
+                        src="/Images-Videos/_images/Small/Landscape/small_forest.jpg"
+                        data-src="/Images-Videos/_images/Large/Landscape/large_forest.jpg">
+                </a>
+                <p>Photo</p>
+            </div>
+        </div>
+
+        <div class="Items-Link">
+            <a href="/Art/Recent.html">VIEW MORE</a>
+        </div>
+    </div>
+
+    <!--#endregion-->
+
+    <!--#region Social-->
+    <div class="Box">
+        <h2>JOIN US</h2>
+        <div class="Social-Links">
+            <a href="https://www.youtube.com/channel/UCiKZ7lGT_YsVageXRisVCOA"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/chaos.and.art_/"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/_ChaosAndArt_"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/Chaos-And-Art"><i class="fab fa-github"></i></a>
+            <a href=""><i class="fab fa-patreon"></i></a>
+        </div>
+    </div>
+    <!--#endregion-->
+
+    <!--#region Closing-->
+    <div class="Closer">
+        <div class="Contact">
+            <a href="/Contact.html">CONTACT US</a>
+        </div>
+        <div class="Close">
+            <h2>Chaos & Art</h2>
+            <p>©2019 Chaos & Art. All Rights Reserved.</p>
+            <a href="/Privacy_Policy.html">Privacy Policy</a>
+            <a href="/Terms_Conditions.html">Terms and Conditions</a>
+        </div>
+    </div>
+    <!--#endregion-->
+
+    <!--#region-Scripts-->
+
+    <!--jQuery -->
+    <script src="/js/jquery-3.5.1.min.js"></script>
+
+    <script src="/js/_SlideShow.js"></script>
+    <script src="/js/jquery.lazy.min.js"></script>
+
+    <!--Utils-->
+    <script src="/js/tiny-slider.js"></script>
+    <script src="/js/_Carousel.js"></script>
+    <script src="/js/_Utils.js"></script>
+
+    <!-- #endregion -->
+
+</body>
+
+</html>
