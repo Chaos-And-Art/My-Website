@@ -1,0 +1,168 @@
+<!doctype html>
+<html ng-app="todoApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chaos & Art</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('todoApp', [])
+            .controller('TodoListController', function () {
+                var todoList = this;
+                todoList.todos = [
+                    { text: 'click me', done: true },
+                    { text: 'add your own element below', done: false }];
+
+                todoList.addTodo = function () {
+                    todoList.todos.push({ text: todoList.todoText, done: false });
+                    todoList.todoText = '';
+                };
+
+                todoList.remaining = function () {
+                    var count = 0;
+                    angular.forEach(todoList.todos, function (todo) {
+                        count += todo.done ? 0 : 1;
+                    });
+                    return count;
+                };
+
+                todoList.archive = function () {
+                    var oldTodos = todoList.todos;
+                    todoList.todos = [];
+                    angular.forEach(oldTodos, function (todo) {
+                        if (!todo.done) todoList.todos.push(todo);
+                    });
+                };
+            });
+    </script>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", Arial, serif;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .Header {
+            padding: 25px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .Box {
+            border-radius: 25px;
+            width: 98%;
+            height: auto;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-top: 5px;
+            padding-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .Box .info {
+            width: 50%;
+            margin: auto;
+            text-align: left;
+            padding-bottom: 25px;
+        }
+
+        .Box .example {
+            width: 50%;
+            margin: auto;
+            text-align: left;
+        }
+
+        .done-true {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+        @media screen and (max-width: 784px) {
+            .Box {
+                width: 100%;
+                border-radius: 10px;
+                padding-bottom: 25px;
+            }
+
+            .Box .info {
+                width: 90%;
+                margin: auto;
+                text-align: left;
+                padding-bottom: 25px;
+            }
+
+            .Box .example {
+                width: 90%;
+                margin: auto;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Header">
+        <h1>Angular.js Testing</h1>
+        <p>Below are a few examples that showcase basic implementations of angular.js within an HTML page. </p>
+    </div>
+
+    <div class="Box">
+        <div class="info">
+            <h4>Example 1:</h4>
+            <p>Using the "ng-model" control built into angular.js, we can data-bind user input from a text field to a
+                a specific HTML element using the declarative format: "&#x7B; &#x7B; &#x7D; &#x7D;"
+                <br> <br>
+                In this particular scenario, the code is implmented as followed: ng-model="yourName" with our HTML
+                element h1 holding "Hello &#x7B; &#x7B; yourName &#x7D; &#x7D;"
+            </p>
+        </div>
+
+        <div class="example">
+            <label>Name:</label>
+            <input type="text" ng-model="yourName" placeholder="Enter a name here">
+            <h1>Hello {{yourName}}!</h1>
+        </div>
+    </div>
+
+    <div class="Box">
+        <div class="info">
+            <h4>Example 2:</h4>
+            <p>Similarly in example 1, we can use the "ng-controller" control built into angular.js, we can data-bind
+                user input of a check list to
+                a specific HTML element once again using the declarative format: "&#x7B; &#x7B; &#x7D; &#x7D;"
+            </p>
+        </div>
+
+        <div class="example" ng-controller="TodoListController as todoList">
+            <span>Remaining: {{todoList.remaining()}} of {{todoList.todos.length}}</span>
+            (<a href="" ng-click="todoList.archive()">clear selected</a>)
+            <hr>
+            <br>
+            <ul class="unstyled">
+                <li ng-repeat="todo in todoList.todos">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="todo.done">
+                        <span class="done-{{todo.done}}">{{todo.text}}</span>
+                    </label>
+                </li>
+            </ul>
+            <form ng-submit="todoList.addTodo()">
+                <input type="text" ng-model="todoList.todoText" size="30" placeholder="Add new element here">
+                <input class="btn-primary" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
